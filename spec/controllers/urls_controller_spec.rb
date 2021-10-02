@@ -7,6 +7,15 @@ RSpec.describe UrlsController, type: :controller do
     allow(controller).to receive(:current_user).and_return(user)
   end
 
+  describe 'show' do
+    context 'when url not found' do
+      it 'should redirect to url index page' do
+        get :show, params: {id: -1}
+        expect(response).to redirect_to urls_path
+      end
+    end
+  end
+
   describe 'new' do
     it 'should success' do
       get :new

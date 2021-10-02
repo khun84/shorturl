@@ -2,7 +2,7 @@ class ShortUrl < ApplicationRecord
   belongs_to :url
   MAX_LENGTH = 15
   MIN_LENGTH = 5
-  RANDOM_LENGTHS = [5..15].to_a.freeze
+  RANDOM_LENGTHS = (5..15).entries.freeze
 
   validates_presence_of :url_hash
   validates_uniqueness_of :url_hash

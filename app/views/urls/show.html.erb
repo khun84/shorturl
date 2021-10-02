@@ -1,1 +1,25 @@
 <h1>Show url</h1>
+
+<section>
+  <p>
+    <strong>Title:</strong>
+    <%= @url.title %>
+  </p>
+
+  <p>
+    <strong>Url:</strong>
+    <%= @url.original_url %>
+  </p>
+
+  <h2>
+    Short Urls (count: <%= @url.short_urls.size %>)
+  </h2>
+
+  <% @url.short_urls.each do |s_url| %>
+    <ul>
+      <li><%= s_url.url_hash %></li>
+    </ul>
+  <% end %>
+</section>
+
+<%= home_link %>
