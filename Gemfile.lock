@@ -67,6 +67,12 @@ GEM
       nokogiri (~> 1.8)
     concurrent-ruby (1.1.9)
     crass (1.0.6)
+    database_cleaner (2.0.1)
+      database_cleaner-active_record (~> 2.0.0)
+    database_cleaner-active_record (2.0.1)
+      activerecord (>= 5.a)
+      database_cleaner-core (~> 2.0.0)
+    database_cleaner-core (2.0.1)
     devise (4.8.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -195,6 +201,8 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
+    shoulda-matchers (5.0.0)
+      activesupport (>= 5.2.0)
     spring (2.1.1)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -238,6 +246,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   chromedriver-helper
+  database_cleaner
   devise
   factory_bot_rails
   jbuilder (~> 2.5)
@@ -250,6 +259,7 @@ DEPENDENCIES
   rspec-rails (~> 3.5)
   sass-rails (~> 5.0)
   selenium-webdriver
+  shoulda-matchers
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)
