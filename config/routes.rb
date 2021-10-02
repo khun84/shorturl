@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     # create user has the same path name as
     get 'register', to: 'registrations#new', as: :register
     post 'register', to: 'registrations#create'
-    # get '/', to: 'dashboard#index'
+    get '/', to: 'dashboard#index'
 
   end
 end
