@@ -1,5 +1,6 @@
 class Url < ApplicationRecord
   belongs_to :user
+  has_many :short_urls
 
   validates_uniqueness_of :original_url
   validates_presence_of :original_url, :title
