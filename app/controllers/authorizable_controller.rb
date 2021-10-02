@@ -1,4 +1,4 @@
-class ApplicationController < ActionController::Base
+class AuthorizableController < ApplicationController
   before_action :redirect_if_not_authorize
 
   private
