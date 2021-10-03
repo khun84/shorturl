@@ -46,4 +46,14 @@ RSpec.describe ShortUrl, type: :model do
       end
     end
   end
+
+  describe '#to_url' do
+    let(:short_url) { build_stubbed(:short_url, url_hash: 'url-hash', url: build_stubbed(:url, original_url: 'https://google.com')) }
+
+    subject { short_url.to_url }
+
+    it 'should return short url with scheme and domain' do
+      expect(subject).to eq "http://localhost:3000/u/url-hash"
+    end
+  end
 end

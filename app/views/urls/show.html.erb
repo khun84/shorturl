@@ -17,7 +17,9 @@
 
   <% @url.short_urls.each do |s_url| %>
     <ul>
-      <li><%= s_url.url_hash %></li>
+      <li>
+        <a href="<%= s_url.to_url %>" target="_blank"><%= s_url.to_url %></a>
+      </li>
     </ul>
   <% end %>
 </section>
