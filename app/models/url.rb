@@ -1,5 +1,6 @@
 class Url < ApplicationRecord
   DEFAULT_TITLE = 'Default title'
+  include Utils::UrlFormatValidation
   belongs_to :user
   has_many :short_urls
 
@@ -15,9 +16,6 @@ class Url < ApplicationRecord
   private
 
   def validate_url_format
-    uri = URI.parse(original_url)
-    errors.add(:format, 'invalid url format') unless uri.is_a?(URI::HTTP) && !uri.host.nil?
-  rescue URI::InvalidURIError
-    errors.add(:format, 'invalid url format')
+    url_format_valid?(original_url)
   end
 end

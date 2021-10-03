@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.google.com/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - rest-client/2.1.0 (darwin19 x86_64) ruby/2.7.3p183
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - www.google.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 03 Oct 2021 06:43:06 GMT
+      Expires:
+      - "-1"
+      Cache-Control:
+      - private, max-age=0
+      Content-Type:
+      - text/html; charset=ISO-8859-1
+      P3p:
+      - CP="This is not a P3P policy! See g.co/p3phelp for more info."
+      Server:
+      - gws
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      Set-Cookie:
+      - 1P_JAR=2021-10-03-06; expires=Tue, 02-Nov-2021 06:43:06 GMT; path=/; domain=.google.com;
+        Secure
+      - NID=511=FuZNpW3bVh_am58e5cHgNvuOIfTsyIwMZtUaNMtpreEZtBWSHIE_tZ64JpuCu7JlrjYsX9dkcBbDZf-bv-z2bNv6ol_KBLBJE3sXScLMXp4lbUwODW-M2eo_3_wwXQoIsVbNLq66kc4P9m3ylyR_0Rcqfqyn3sD7dviwTo8jgsw;
+        expires=Mon, 04-Apr-2022 06:43:06 GMT; path=/; domain=.google.com; HttpOnly
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443";
+        ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443";
+        ma=2592000; v="46,43"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '<head><title><foo>Google</foo></title></head>'
+  recorded_at: Sun, 03 Oct 2021 06:43:06 GMT
+recorded_with: VCR 6.0.0

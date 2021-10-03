@@ -4,7 +4,7 @@ RSpec.describe Urls::Create do
   let(:user) { build_stubbed(:user) }
   let(:http_parser) { RemoteHtmlParserService }
   before do
-    allow(http_parser).to receive(:run).and_return(double(success?: true, result: 'html title'))
+    allow(http_parser).to receive(:run).and_return(double(success?: true, result: { "head > title" => 'html title' }))
   end
 
   describe 'validation' do
@@ -16,6 +16,15 @@ RSpec.describe Urls::Create do
     end
 
     subject { described_class.validate(inputs) }
+
+    context 'when url format is not valid' do
+      let(:inputs) { super().merge(original_url: 'foo') }
+
+      it 'should fail with error message' do
+        expect(subject.success?).to eq false
+        expect(subject.errors.message).to eq({ "original_url" => "Url is not valid" })
+      end
+    end
 
     context 'when url model is not valid' do
       before do
@@ -69,11 +78,12 @@ RSpec.describe Urls::Create do
 
     context 'when failed to fetch url page title' do
       before do
-        allow(RemoteHtmlParserService).to receive(:run).and_return(double(success?: false))
+        allow(http_parser).to receive(:run).and_return(double(success?: false))
       end
       it 'should fallback to default title' do
         expect(subject.success?).to eq true
         url = subject.result.reload
+        expect(http_parser).to have_received(:run).with(url: 'https://example.com', queries: ['head > title'])
         expect(url).to have_attributes(
                          title: Url::DEFAULT_TITLE,
                        )

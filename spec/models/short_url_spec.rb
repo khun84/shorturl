@@ -42,7 +42,6 @@ RSpec.describe ShortUrl, type: :model do
       end
 
       it 'should generate different hash in different calls' do
-        puts subject
         expect(subject.length).to eq iteration_count
       end
     end

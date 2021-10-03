@@ -21,6 +21,10 @@ class ApplicationService
     Error.new
   end
 
+  def has_error?
+    errors.has_error?
+  end
+
   def self.run(**args)
     new(**args).run
   end
