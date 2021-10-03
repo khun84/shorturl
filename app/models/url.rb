@@ -1,4 +1,5 @@
 class Url < ApplicationRecord
+  DEFAULT_TITLE = 'Default title'
   belongs_to :user
   has_many :short_urls
 

@@ -1,7 +1,6 @@
 class Urls::Create < ApplicationMutation
   required do
     model :user, class: User
-    string :title
     string :original_url
   end
 
@@ -23,8 +22,16 @@ class Urls::Create < ApplicationMutation
   # @return [Url]
   def url
     return @url if @url
+    title = url_title_result&.success? ? url_title_result.result : Url::DEFAULT_TITLE
     @url = user.urls.build(title: title, original_url: original_url)
     @url.build_short_url
     @url
+  end
+
+  # @return [ApplicationService::Result]
+  def url_title_result
+    @title_result ||= RemoteHtmlParserService.run(url: original_url, tags: ['title'])
+  rescue StandardError => e
+    Rails.logger.error({error: e.message, object_class: self.class.name})
   end
 end

@@ -2,13 +2,16 @@ require 'rails_helper'
 
 RSpec.describe Urls::Create do
   let(:user) { build_stubbed(:user) }
+  let(:http_parser) { RemoteHtmlParserService }
+  before do
+    allow(http_parser).to receive(:run).and_return(double(success?: true, result: 'html title'))
+  end
 
   describe 'validation' do
     let(:inputs) do
       {
         user: user,
-        original_url: 'https://example.com',
-        title: 'example'
+        original_url: 'https://example.com'
       }
     end
 
@@ -45,8 +48,7 @@ RSpec.describe Urls::Create do
     let(:inputs) do
       {
         user: user,
-        original_url: 'https://example.com',
-        title: 'example'
+        original_url: 'https://example.com'
       }
     end
     subject { described_class.run(inputs) }
@@ -56,13 +58,26 @@ RSpec.describe Urls::Create do
       url = subject.result.reload
       expect(url).to have_attributes(
                        original_url: inputs[:original_url],
-                       title: inputs[:title],
+                       title: 'html title',
                        user_id: user.id
                      )
     end
 
     it 'should create one associated short url' do
       expect(subject.result.short_urls.count).to eq 1
+    end
+
+    context 'when failed to fetch url page title' do
+      before do
+        allow(RemoteHtmlParserService).to receive(:run).and_return(double(success?: false))
+      end
+      it 'should fallback to default title' do
+        expect(subject.success?).to eq true
+        url = subject.result.reload
+        expect(url).to have_attributes(
+                         title: Url::DEFAULT_TITLE,
+                       )
+      end
     end
   end
 end

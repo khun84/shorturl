@@ -27,7 +27,7 @@ class UrlsController < AuthorizableController
   private
 
   def create_url_params
-    params.require(:url).permit(:original_url, :title).to_h
+    params.require(:url).permit(:original_url).to_h
   end
 
   def load_url
