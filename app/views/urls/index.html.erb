@@ -1,0 +1,13 @@
+<div>
+  Total urls count: <%= @urls.count %>
+</div>
+
+<ol>
+  <% @urls.each do |url| %>
+    <ul>
+      <a href="<%= url_url(url) %>"><%= url.original_url %></a>
+    </ul>
+  <% end %>
+</ol>
+
+<%= home_link %>

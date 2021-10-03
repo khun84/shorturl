@@ -20,4 +20,8 @@ Rails.application.routes.draw do
     get '/', to: 'dashboard#index'
 
   end
+
+  resources :urls
+
+  get '/u/:url_hash', to: 'redirection#show'
 end

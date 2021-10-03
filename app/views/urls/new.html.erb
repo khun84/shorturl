@@ -1,0 +1,18 @@
+<h1>New Short Url</h1>
+
+<section class="url_form">
+  <h2>Please Enter The Detail</h2>
+
+  <%= form_for(@new_url) do |form| %>
+    <div class="field">
+      <%= form.label :original_url, 'Original Url' %>
+      <%= form.text_field :original_url, id: :original_url %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit 'Submit' %>
+    </div>
+  <% end %>
+
+  <%= home_link %>
+</section>

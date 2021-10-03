@@ -15,6 +15,12 @@
         <%= button_to 'Logout', logout_path, method: :delete %>
     </div>
   <% end %>
-    <%= yield %>
+    <main>
+      <% if notice && notice['message'] %>
+        <aside id="notice" class="<%= notice['severity'] == "error" ? "red_text" : "" %>"><%= notice['message'] %></aside>
+        <aside id="alert"><%= alert %></aside>
+      <% end %>
+      <%= yield %>
+    </main>
   </body>
 </html>
