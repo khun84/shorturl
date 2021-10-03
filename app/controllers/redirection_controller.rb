@@ -1,6 +1,4 @@
 class RedirectionController < ApplicationController
-  skip_before_action :redirect_if_not_authorize
-
   def show
     short_url = ShortUrl.find_by_url_hash(params[:url_hash])&.original_url
     if short_url

@@ -1,6 +1,4 @@
 class ApplicationController < ActionController::Base
-  before_action :redirect_if_not_authorize
-
   private
 
   def redirect_if_not_authorize
