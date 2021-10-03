@@ -19,8 +19,21 @@ class ShortUrl < ApplicationRecord
     val[0...length]
   end
 
+  # @return [String]
+  def to_url
+    File.join(redirect_config.host.domain, redirect_config.route_namespace, url_hash)
+  end
+
   # @param [Integer] length
   def generate_url_hash(length: nil)
     self.url_hash = self.class.generate_url_hash(length: length)
+  end
+
+  def self.redirect_config
+    Settings.redirection
+  end
+
+  def redirect_config
+    self.class.redirect_config
   end
 end

@@ -23,5 +23,8 @@ Rails.application.routes.draw do
 
   resources :urls
 
-  get '/u/:url_hash', to: 'redirection#show'
+  scope ShortUrl.redirect_config.route_namespace do
+    get ":url_hash", to: 'redirection#show'
+  end
+  # get "/#{ShortUrl.redirect_config.route_namespace}/:url_hash", to: 'redirection#show'
 end

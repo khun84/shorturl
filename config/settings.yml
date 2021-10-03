@@ -1,0 +1,4 @@
+redirection:
+  host:
+    domain: http://localhost:3000
+  route_namespace: 'u'

@@ -25,6 +25,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'mutations'
 gem 'kaminari'
 gem 'rest-client'
+gem 'config'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
