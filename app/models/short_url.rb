@@ -8,6 +8,8 @@ class ShortUrl < ApplicationRecord
   validates_uniqueness_of :url_hash
   validates_length_of :url_hash, maximum: MAX_LENGTH, minimum: MIN_LENGTH
 
+  delegate :original_url, to: :url, allow_nil: true
+
   # @param [Integer] length
   # @return [String]
   def self.generate_url_hash(length: nil)

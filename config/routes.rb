@@ -22,4 +22,6 @@ Rails.application.routes.draw do
   end
 
   resources :urls
+
+  get '/u/:url_hash', to: 'redirection#show'
 end
