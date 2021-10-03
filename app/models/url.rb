@@ -5,6 +5,11 @@ class Url < ApplicationRecord
   validates_uniqueness_of :original_url
   validates_presence_of :original_url, :title
   validate :validate_url_format
+  accepts_nested_attributes_for :short_urls
+
+  def build_short_url
+    short_urls.build.tap { |surl| surl.generate_url_hash }
+  end
 
   private
 

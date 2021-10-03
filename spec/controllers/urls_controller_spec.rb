@@ -26,9 +26,12 @@ RSpec.describe UrlsController, type: :controller do
   describe 'create' do
     let(:params) do
       {
-        original_url: 'http://example.com',
-        title: 'title'
-      }.stringify_keys
+        url: {
+          original_url: 'http://example.com',
+          title: 'title'
+        }
+      }.deep_stringify_keys
+
     end
     let(:url) { build_stubbed(:url) }
     let(:mutation) { Urls::Create }
@@ -38,7 +41,7 @@ RSpec.describe UrlsController, type: :controller do
     end
     it 'should create url and redirect to url detail page' do
       post :create, params: params
-      expect(mutation).to have_received(:run).with(params.merge(user: user))
+      expect(mutation).to have_received(:run).with(params['url'].merge(user: user))
       expect(response).to redirect_to(url_path(url))
     end
 

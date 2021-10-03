@@ -5,7 +5,7 @@
 <ol>
   <% @urls.each do |url| %>
     <ul>
-      <a href="<%= url_url %>"><%= url.original_url %></a>
+      <a href="<%= url_url(url) %>"><%= url.original_url %></a>
     </ul>
   <% end %>
 </ol>

@@ -16,8 +16,7 @@ class UrlsController < AuthorizableController
     if outcome.success?
       redirect_to url_path(outcome.result)
     else
-      @new_url = Url.new(create_url_params)
-      redirect_to new_url_path
+      redirect_to new_url_path, notice: { message: outcome.errors.message.values.join("\n"), severity: 'error' }
     end
   end
 
@@ -28,7 +27,7 @@ class UrlsController < AuthorizableController
   private
 
   def create_url_params
-    params.permit(:original_url, :title).to_h
+    params.require(:url).permit(:original_url, :title).to_h
   end
 
   def load_url
