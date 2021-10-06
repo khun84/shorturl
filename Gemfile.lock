@@ -131,6 +131,7 @@ GEM
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
     ffi (1.15.4)
+    geocoder (1.6.7)
     globalid (0.5.2)
       activesupport (>= 5.0)
     hashdiff (1.0.1)
@@ -215,6 +216,7 @@ GEM
     rb-fsevent (0.11.0)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    redis (3.3.5)
     regexp_parser (2.1.1)
     responders (3.0.1)
       actionpack (>= 5.0)
@@ -317,6 +319,7 @@ DEPENDENCIES
   database_cleaner
   devise
   factory_bot_rails
+  geocoder
   jbuilder (~> 2.5)
   kaminari
   listen (>= 3.0.5, < 3.2)
@@ -324,6 +327,7 @@ DEPENDENCIES
   pg (>= 0.18, < 2.0)
   puma (~> 3.11)
   rails (~> 5.2.6)
+  redis
   rest-client
   rspec-rails (~> 3.5)
   sass-rails (~> 5.0)

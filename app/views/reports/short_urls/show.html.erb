@@ -28,8 +28,8 @@
       <% @url_clicks.each do |click| %>
         <tr>
           <td><%= click.created_at %></td>
-          <td>Ip</td>
-          <td>Location</td>
+          <td><%= click.ip %></td>
+          <td><%= click.address  %></td>
         </tr>
       <% end %>
     </tbody>

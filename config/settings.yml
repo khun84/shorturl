@@ -2,3 +2,10 @@ redirection:
   host:
     domain: http://localhost:3000
   route_namespace: 'u'
+redis:
+  host: '0.0.0.0'
+  port: 6379
+  passw:
+geocoding:
+  ipinfo:
+    api_key: 'move-to-secret'

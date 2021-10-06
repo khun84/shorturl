@@ -6,7 +6,7 @@ class Reports::ShortUrlsController < AuthorizableController
   end
 
   def show
-    @url_clicks = UrlClick.where(short_url_id: @short_url.id)
+    @url_clicks = UrlClick.where(short_url_id: @short_url.id).map { |c| UrlClickPresenter.new(c) }
   end
 
   private
