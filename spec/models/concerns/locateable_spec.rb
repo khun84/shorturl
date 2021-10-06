@@ -55,4 +55,38 @@ RSpec.describe Locateable do
       end
     end
   end
+
+  describe Locateable::Location do
+    describe '.build' do
+      let(:args) do
+        {
+          ip: 'ip',
+          address: 'address',
+          latitude: 'latitude',
+          longitude: 'longitude',
+          state: 'state',
+          province: 'province',
+          state_code: 'state_code',
+          province_code: 'province_code',
+          country: 'country',
+          country_code: 'country_code'
+        }.stringify_keys
+      end
+      subject { described_class.build(args) }
+      it 'should build location data object' do
+        expect(subject).to have_attributes(
+                             ip: 'ip',
+                             address: 'address',
+                             latitude: 'latitude',
+                             longitude: 'longitude',
+                             state: 'state',
+                             province: 'province',
+                             state_code: 'state_code',
+                             province_code: 'province_code',
+                             country: 'country',
+                             country_code: 'country_code'
+                           )
+      end
+    end
+  end
 end

@@ -13,7 +13,7 @@ module Locateable
                           country_code]
   class Location < Struct.new(*LOCATION_ATTRIBUTES.map(&:to_sym))
     def self.build(args = {})
-      args.present? ? new(args.values_at(*LOCATION_ATTRIBUTES)) : new
+      args.present? ? new(*args.values_at(*LOCATION_ATTRIBUTES)) : new
     end
   end
 
