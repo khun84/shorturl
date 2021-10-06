@@ -26,6 +26,8 @@ gem 'mutations'
 gem 'kaminari'
 gem 'rest-client'
 gem 'config'
+gem 'geocoder'
+gem 'redis'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
