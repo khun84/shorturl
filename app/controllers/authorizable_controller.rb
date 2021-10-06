@@ -1,6 +1,7 @@
 class AuthorizableController < ApplicationController
   before_action :redirect_if_not_authorize
-
+  # @!method current_user
+  #   @return [User]
   private
 
   def redirect_if_not_authorize
