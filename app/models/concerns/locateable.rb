@@ -27,6 +27,8 @@ module Locateable
           "data" => data,
           "provider" => provider&.to_s
         }
+      else
+        {}
       end
     end
   end

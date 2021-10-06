@@ -14,5 +14,6 @@ Geocoder.configure(
   units: :km,
 
   # caching (see Caching section below for details):
-  cache: $redis
+  cache: $redis,
+  logger: Rails.logger
 )
