@@ -8,7 +8,7 @@ class ShortUrl < ApplicationRecord
   validates_uniqueness_of :url_hash
   validates_length_of :url_hash, maximum: MAX_LENGTH, minimum: MIN_LENGTH
 
-  delegate :original_url, to: :url, allow_nil: true
+  delegate :original_url, :title, to: :url, allow_nil: true
 
   # @param [Integer] length
   # @return [String]
@@ -19,9 +19,13 @@ class ShortUrl < ApplicationRecord
     val[0...length]
   end
 
+  def self.url_hash_to_url(url_hash)
+    File.join(redirect_config.host.domain, redirect_config.route_namespace, url_hash)
+  end
+
   # @return [String]
   def to_url
-    File.join(redirect_config.host.domain, redirect_config.route_namespace, url_hash)
+    self.class.url_hash_to_url(url_hash)
   end
 
   # @param [Integer] length

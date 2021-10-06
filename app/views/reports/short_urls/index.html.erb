@@ -1,0 +1,29 @@
+<h1>Short Url Reports</h1>
+
+<table>
+  <thead>
+    <tr>
+      <td>Short url</td>
+      <td>Long url</td>
+      <td>Title</td>
+      <td>Clicks count</td>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @short_url_stats.each do |stat| %>
+      <tr>
+        <td>
+          <a href="<%= reports_short_url_path(stat.url_hash) %>" target="_blank">
+            <%= ShortUrl.url_hash_to_url(stat.url_hash) %>
+          </a>
+        </td>
+        <td><%= stat.original_url %></td>
+        <td><%= stat.title %></td>
+        <td><%= stat.click_count %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= home_link %>

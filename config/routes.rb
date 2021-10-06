@@ -26,5 +26,8 @@ Rails.application.routes.draw do
   scope ShortUrl.redirect_config.route_namespace do
     get ":url_hash", to: 'redirection#show'
   end
-  # get "/#{ShortUrl.redirect_config.route_namespace}/:url_hash", to: 'redirection#show'
+
+  namespace :reports do
+    resources :short_urls, only: [:index, :show], as: :short_urls
+  end
 end
