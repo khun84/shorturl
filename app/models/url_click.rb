@@ -1,0 +1,2 @@
+class UrlClick < ApplicationRecord
+end
