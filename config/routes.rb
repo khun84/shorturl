@@ -28,6 +28,6 @@ Rails.application.routes.draw do
   end
 
   namespace :reports do
-    resources :short_urls, only: :index, as: :short_urls
+    resources :short_urls, only: [:index, :show], as: :short_urls
   end
 end

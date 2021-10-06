@@ -6,7 +6,7 @@
       <td>Short url</td>
       <td>Long url</td>
       <td>Title</td>
-      <td>Click count</td>
+      <td>Clicks count</td>
     </tr>
   </thead>
 
@@ -14,7 +14,7 @@
     <% @short_url_stats.each do |stat| %>
       <tr>
         <td>
-          <a href="#">
+          <a href="<%= reports_short_url_path(stat.url_hash) %>" target="_blank">
             <%= ShortUrl.url_hash_to_url(stat.url_hash) %>
           </a>
         </td>

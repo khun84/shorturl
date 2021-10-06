@@ -1,0 +1,39 @@
+<h1>Click events</h1>
+
+<div>
+  <p>
+    Short url: <%= @short_url.to_url %>
+  </p>
+  <p>
+    Original url: <%= @short_url.original_url %>
+  </p>
+  <p>
+    Title: <%= @short_url.title %>
+  </p>
+</div>
+
+<hr>
+
+<div>
+  <table>
+    <thead>
+      <tr>
+        <td>Event time</td>
+        <td>Ip</td>
+        <td>Location</td>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @url_clicks.each do |click| %>
+        <tr>
+          <td><%= click.created_at %></td>
+          <td>Ip</td>
+          <td>Location</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<a href="<%= reports_short_urls_path %>">Back to urls report</a>
