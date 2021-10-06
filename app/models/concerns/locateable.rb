@@ -22,7 +22,8 @@ module Locateable
     # @return [Hash{String=>Object}]
     def lookup_location(ip)
       return {} unless ip
-      if (res = Geocoder.search(ip, ip_lookup: Geocoder.config.ip_lookup).first)
+      provider = Geocoder.config.ip_lookup
+      if (res = Geocoder.search(ip, ip_lookup: provider).first)
         data = LOCATION_ATTRIBUTES.each_with_object({}) do |attr, memo|
           memo[attr] = res.send(attr) if res.respond_to? attr
         end
