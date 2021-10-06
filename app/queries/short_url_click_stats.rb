@@ -5,7 +5,7 @@ class ShortUrlClickStats < ApplicationQuery
   def initialize(user_id: nil, **args)
     @user_id = user_id
     @since = args[:since] || 1.day.ago
-    @untill = args[:until] || 1.day.ago
+    @untill = args[:until] || Time.current
   end
 
   # should containt [short_url, original_url, original_url_title]
